@@ -25,7 +25,7 @@ class _PortfoliioScreen extends State<PortfoliioScreen> {
       Image.asset("assets/image/AriPay.png"),
     ),
     MyPortfolio(
-      "BSSM Self-Counter",
+      "BSSM 키오스크",
       "부산소프트웨어마이스터고등학교\n교내 매점 셀프계산대",
       Image.asset("assets/image/self.png"),
     ),
