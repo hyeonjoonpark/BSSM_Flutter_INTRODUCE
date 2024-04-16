@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:test1/components/nav_bar.dart';
+import 'package:get/get.dart';
 
 class MyPortfolio {
   final String title;
@@ -60,11 +60,68 @@ class _PortfoliioScreen extends State<PortfoliioScreen> {
       Image.asset("assets/image/lace.png"),
     ),
   ];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       builder: (context, Widget? child) => Scaffold(
-        appBar: navBar(),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.white,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    // 눌렀을 때 Drawer 열리게
+                    _scaffoldKey.currentState?.openDrawer();
+                  },
+                  icon: const Icon(Icons.menu),
+                )
+              ],
+            ),
+          ),
+        ),
+        drawer: Drawer(
+          backgroundColor: Color(0xFFBAC9FF),
+          child: ListView(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.home),
+                title: const Text(
+                  '메인페이지',
+                  style: TextStyle(fontWeight: FontWeight.w900),
+                ),
+                onTap: () {
+                  Get.offAndToNamed("/");
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.book),
+                title: const Text(
+                  '나의 기술스텍',
+                  style: TextStyle(fontWeight: FontWeight.w900),
+                ),
+                onTap: () {
+                  Get.offAndToNamed("/stack");
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.laptop_mac),
+                title: const Text(
+                  '프로젝트',
+                  style: TextStyle(fontWeight: FontWeight.w900),
+                ),
+                onTap: () {
+                  Get.offAndToNamed("/portfolio");
+                },
+              ),
+            ],
+          ),
+        ),
+        key: _scaffoldKey,
         body: SingleChildScrollView(
           child: Center(
             child: Column(
