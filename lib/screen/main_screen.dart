@@ -166,7 +166,7 @@ class _MyHomePageState extends State<HomeScreen> {
                       width: 0.8.sw,
                       padding: const EdgeInsets.only(left: 45, top: 5),
                       child: Text(
-                        _controller.text != "" ? letterList[idx] : "",
+                        _controller.text == "" ? letterList[idx] : "",
                         style: const TextStyle(
                           fontWeight: FontWeight.w700,
                         ),
